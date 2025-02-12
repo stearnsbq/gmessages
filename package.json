@@ -1,0 +1,11 @@
+{
+    "name": "gmessages",
+    "private": "true",
+    "type": "module",
+    "workspaces": [
+      "apps/*"
+    ],
+    "scripts": {
+      "clean": "rm -rf node_modules bun.lockb "
+    }
+  }
