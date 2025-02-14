@@ -13,7 +13,7 @@ export const auth = new Elysia({aot: false})
         })
     })
 })
-.derive(({ headers }) => {
+.resolve({as: 'scoped'}, async ({ headers }) => {
     const auth = headers['authorization']
 
     const bearer = auth?.startsWith('Bearer ') ? auth.slice(7) : null;
@@ -26,19 +26,20 @@ export const auth = new Elysia({aot: false})
 
     const tokenHMAC = hasher.digest("hex")
 
-    return {
-        bearer: tokenHMAC
-    }
-})
-.onBeforeHandle(async ({bearer}) => {
-    if(!bearer) return error(401, "Unauthorized");
-
     const db = getDB();
 
-    const tokenExists = await db.select().from(tokens).where(eq(tokens.token, bearer));
+    const result = await db.query.tokens.findFirst({where: eq(tokens.token, tokenHMAC || '')});
 
-    if(!tokenExists.length) return error(401, "Unauthorized"); 
+    if(!result) return error(401, 'Unauthorized');
 
+    const steamID = result.steamID;
+
+    return {
+        bearer: tokenHMAC,
+        steamID
+    }
 })
+
+
 
 .as('plugin')

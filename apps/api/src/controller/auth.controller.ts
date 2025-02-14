@@ -4,7 +4,6 @@ import { getDB } from "../util/di";
 import { users } from "../db/schema/users";
 import {eq} from 'drizzle-orm'
 import { jwt } from '@elysiajs/jwt'
-import jwtPlugin from "../plugins/jwt.plugin";
 import { tokens } from "../db/schema/tokens";
 import { nanoid } from "nanoid";
 
@@ -13,10 +12,11 @@ export const authController = new Elysia({prefix: '/auth'})
 
     const db = getDB();
 
-    const userSelectResult = await db.select().from(users).where(eq(users.steamID, steamID));
+    const userSelectResult = await db.query.users.findFirst({where: eq(users.steamID, steamID)});
 
-    if(userSelectResult.length > 0) return error(401, "Unauthorized");
-    
+    if(!userSelectResult) return error(401, "Unauthorized");
+
+
     await db.insert(users).values({steamID, created: Date.now()})
 
     // generate initial auth token for creating messages
