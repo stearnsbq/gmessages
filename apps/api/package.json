@@ -6,7 +6,11 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/jwt": "^1.2.0",
+    "dotenv": "^16.4.7",
     "elysia": "latest",
+    "nanoid": "^5.0.9",
+    "typedi": "^0.10.0",
     "wrangler": "^3.107.3"
   },
   "devDependencies": {

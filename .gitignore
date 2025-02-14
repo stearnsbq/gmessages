@@ -3,9 +3,10 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.js
+.pnp.jsb
 
 **/*/.wrangler
+.wrangler
 
 # testing
 /coverage
@@ -42,3 +43,6 @@ yarn-error.log*
 **/*.log
 package-lock.json
 **/*.bun
+.env
+
+drizzle

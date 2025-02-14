@@ -4,25 +4,15 @@ name = "gmessages-api"
 compatibility_date = "2025-02-04"
 compatibility_flags = [ "nodejs_compat" ]
 
+d1_databases = [
+    { binding = "DB", database_name = "gmessages-db-prod", database_id = "1b323ed8-3234-4228-b8ba-f77694c2a2c8" }
+]
 
 [observability.logs]
 enabled = true
 
-# [vars]
-# MY_VAR = "my-variable"
-
-# [[kv_namespaces]]
-# binding = "MY_KV_NAMESPACE"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-# [[r2_buckets]]
-# binding = "MY_BUCKET"
-# bucket_name = "my-bucket"
-
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "my-database"
-# database_id = ""
-
-# [ai]
-# binding = "AI"
+[env.dev]
+name = "gmessages-api-dev"
+d1_databases = [
+    { binding = "DB", database_name = "gmessages-db-dev", database_id = "4253c6db-0254-4ea0-b331-74b01736eac7" }
+]

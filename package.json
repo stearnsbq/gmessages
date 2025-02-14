@@ -9,8 +9,8 @@
       "clean": "rm -rf node_modules bun.lockb",
       "site:dev": "bun run --cwd ./apps/site dev",
       "site:deploy": "bun run --cwd ./apps/site build  && bun wrangler pages deploy ./apps/site/.svelte-kit/cloudflare --project-name=gmessages",
-      "api:dev": "bun wrangler dev ./apps/api/src/index.ts",
-      "api:deploy": "wrangler deploy --minify ./apps/api/src/index.ts",
+      "api:dev": "bun wrangler dev ./apps/api/src/index.ts --env dev",
+      "api:deploy": "wrangler deploy --minify ./apps/api/src/index.ts --env dev",
       "site": "bun run --cwd ./apps/site dev"
     }
   }

@@ -1,12 +1,16 @@
 import { Context, Elysia } from "elysia";
-import {authController} from './controller/auth';
-import { Env } from "bun";
-
+import {authController} from './controller/auth.controller';
+import { AnyD1Database, drizzle } from 'drizzle-orm/d1';
+import Container from "typedi";
+import { jwt } from '@elysiajs/jwt'
 const app = new Elysia({aot: false})
-.get("/", () => "Hello Elysia")
+.use(jwt({name: 'jwt', secret: process.env.JWT_SECRET || 'default-secret'}))
 .use(authController)
 
 
+export interface Env {
+  DB: AnyD1Database;
+}
 
 export default {
   async fetch(
@@ -15,6 +19,11 @@ export default {
     ctx: Context,
     
   ): Promise<Response> {
+    const db = drizzle(env.DB);
+
+    Container.set('DrizzleDB', db);
+    Container.set('env', env)
+
 
     return await app.fetch(request)
   },
