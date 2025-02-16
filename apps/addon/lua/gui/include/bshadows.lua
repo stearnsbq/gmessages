@@ -89,7 +89,7 @@ if BSHADOWS == nil then
             BSHADOWS.ShadowMaterial:SetTexture('$basetexture', BSHADOWS.RenderTarget)
             render.SetMaterial(BSHADOWS.ShadowMaterial)
             render.DrawScreenQuad()
-            print("Drew Shadow")
+           -- print("Drew Shadow")
         end
     
         cam.End2D()

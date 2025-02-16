@@ -2,6 +2,9 @@ GMessage = GMessage or {
     UI = {
         Tests = {
 
+        },
+        Components = {
+            
         }
     }
 }
@@ -30,6 +33,7 @@ GMessage:Include("settings/theme")
 GMessage:Include("include/bshadows")
 
 GMessage:Include("components/frame")
+GMessage:Include("components/button")
 
 GMessage:Include("windows/create_message/create_message_frame")
 

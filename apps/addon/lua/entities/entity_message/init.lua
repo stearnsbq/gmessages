@@ -23,6 +23,8 @@ function ENT:Initialize()
     self:SetSolid(SOLID_VPHYSICS)
     self:SetUseType(SIMPLE_USE)
 
+    halo.Add(entities, color, blurX=2, blurY=2, passes=1, additive=true, ignoreZ=false)
+
 
     net.WriteEntity(self)
     net.Broadcast()
@@ -43,27 +45,27 @@ function ENT:AcceptInput(name, caller, activator)
 	end
 end
 
-function ENT:StartTouch(caller)
+-- function ENT:StartTouch(caller)
 
-    if caller:IsPlayer() then
+--     if caller:IsPlayer() then
 
-        net.Start("onOpenMessage") 
-        net.WriteString(self:GetMessage())
-        net.WriteInt(self:GetAppraisals(), 32)
-        net.Send(caller)
+--         net.Start("onOpenMessage") 
+--         net.WriteString(self:GetMessage())
+--         net.WriteInt(self:GetAppraisals(), 32)
+--         net.Send(caller)
 
-    end
-
-
-end
+--     end
 
 
-function ENT:EndTouch(caller)
-
-    if caller:IsPlayer() then
-        net.Start("onCloseMessage")
-        net.Send(caller)
-    end
+-- end
 
 
-end
+-- function ENT:EndTouch(caller)
+
+--     if caller:IsPlayer() then
+--         net.Start("onCloseMessage")
+--         net.Send(caller)
+--     end
+
+
+-- end

@@ -17,13 +17,8 @@ net.Receive("onOpenMessage", function ()
     local appraisals = net.ReadInt(32)
 
 
-	messageGUI = vgui.Create('messageGUI')
-	messageGUI:SetSize(800, 110)
-	messageGUI:Center()
-	messageGUI:MakePopup()
+	messageGUI = viewMessage()
 
-	
-	messageGUI.messageLabel:SetText(msg)
 
 end)
 
@@ -35,4 +30,8 @@ net.Receive("onCloseMessage", function ()
 	end
 
 end)
+
+function GM:PreDrawHalos()
+	halo.Add(ents.FindByClass("entity_message"), Color(255, 255, 255), 2, 10, 5, true, false)
+end
 

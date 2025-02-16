@@ -21,9 +21,9 @@ function PANEL:Init()
 
         local margin = pnl.margin
 
-        --surface.SetDrawColor(GMessage.UI.Theme.closeBtn)
+        -- surface.SetDrawColor(GMessage.UI.Theme.closeBtn)
 
-       -- surface.DrawTexturedRect(margin, margin, w - (margin * 2), h - (margin * 2))
+        -- surface.DrawTexturedRect(margin, margin, w - (margin * 2), h - (margin * 2))
 
     end
 
@@ -34,6 +34,11 @@ function PANEL:Init()
     self.header.title:SetTextInset(16, 0)
 
 end
+
+function PANEL:Close()
+    self:Remove()
+end
+
 
 function PANEL:SetTitle(title)
     self.header.title:SetText(title)
