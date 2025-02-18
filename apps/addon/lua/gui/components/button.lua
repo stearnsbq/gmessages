@@ -33,12 +33,14 @@ function PANEL:Init()
 
 end
 
-function PANEL:SetType(type)
+function PANEL:SetType(type) 
+
+    local currTheme = currentTheme()
     
     if type == 'primary' then
-        self.type = GMessage.UI.Theme.button.primary
+        self.type = currTheme.button.primary
     elseif type == 'secondary' then
-        self.type = GMessage.UI.Theme.button.secondary
+        self.type = currTheme.button.secondary
     end
 
 

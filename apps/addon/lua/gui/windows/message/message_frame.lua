@@ -1,12 +1,35 @@
 
 
-function viewMessage()
-    local mainContent = vgui.Create("GMessage.Frame")
+function viewMessage(message, apprasials)
+    local frame = vgui.Create("GMessage.Frame")
+    
+    frame:SetSize(800, 200)
+    frame:Center()
+    frame:MakePopup()
+    frame:SetTitle("View Message")
 
-    mainContent:SetSize(800, 200)
-    mainContent:Center()
-    mainContent:MakePopup()
-    mainContent:SetTitle("View Message")
+    local mainContent = frame:Add("Panel")
+    mainContent:Dock(FILL)
+
+    mainContent:DockPadding(10, 10, 10, 10)
+
+    local messageControls =  mainContent:Add("Panel")
+    messageControls:Dock(BOTTOM)
+    messageControls:SetWidth(25)
+    messageControls:DockMargin(200, 0, 200, 0)
+
+
+    local closeBtn = GMessage.UI.Components.Button("primary")
+
+    closeBtn:Dock(LEFT)
+    closeBtn:SetText(message)
+
+    closeBtn.DoClick = function(pn1)
+        frame:Remove()
+    end
+
+    messageControls:Add(closeBtn)
+
 
     return mainContent
 end

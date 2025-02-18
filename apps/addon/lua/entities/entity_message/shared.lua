@@ -6,3 +6,5 @@ ENT.Category = "GMessages"
 
 ENT.Spawnable = false
 -- ENT.AdminSpawnable = false
+
+

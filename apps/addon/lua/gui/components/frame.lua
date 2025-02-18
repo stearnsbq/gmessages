@@ -4,8 +4,12 @@ function PANEL:Init()
     self.header = self:Add("Panel")
     self.header:Dock(TOP)
 
+
+
     self.header.Paint = function (pnl, w, h)
-        draw.RoundedBoxEx(6, 0, 0, w, h, GMessage.UI.Theme.primary, true, true, false, false)
+        
+        local currTheme = currentTheme()
+        draw.RoundedBoxEx(6, 0, 0, w, h, currTheme.primary, true, true, false, false)
     end
 
 
@@ -27,10 +31,10 @@ function PANEL:Init()
 
     end
 
-
+    local currTheme = currentTheme()
     self.header.title = self.header:Add("DLabel")
     self.header.title:Dock(LEFT)
-    self.header.title:SetTextColor(GMessage.UI.Theme.text.primary)
+    self.header.title:SetTextColor(currTheme.text.primary)
     self.header.title:SetTextInset(16, 0)
 
 end
@@ -53,8 +57,10 @@ end
 function PANEL:Paint(width, height)
     local aX, aY = self:LocalToScreen()
 
+    local currTheme = currentTheme()
+
     BSHADOWS.BeginShadow()
-    draw.RoundedBox(6, aX, aY, width, height, GMessage.UI.Theme.background)
+    draw.RoundedBox(6, aX, aY, width, height, currTheme.background)
     BSHADOWS.EndShadow(1, 2, 2)
 end
 

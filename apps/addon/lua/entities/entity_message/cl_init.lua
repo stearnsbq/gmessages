@@ -7,6 +7,8 @@ function ENT:Draw()
 
     self:DrawModel()
 
+
+
 end
 
 
@@ -16,8 +18,8 @@ net.Receive("onOpenMessage", function ()
     local msg = net.ReadString()
     local appraisals = net.ReadInt(32)
 
-
-	messageGUI = viewMessage()
+	print(msg)
+	messageGUI = viewMessage(msg, appraisals)
 
 
 end)
@@ -31,7 +33,9 @@ net.Receive("onCloseMessage", function ()
 
 end)
 
-function GM:PreDrawHalos()
-	halo.Add(ents.FindByClass("entity_message"), Color(255, 255, 255), 2, 10, 5, true, false)
-end
+-- local function PreDrawHalos()
+-- 	halo.Add(ents.FindByClass("entity_message"), Color(255, 255, 255), 1, 1, 5, true, false)
+-- end
 
+
+-- hook.Add( "PreDrawHalos", "PlayerHalosDrawPlayerHalos", PreDrawHalos )

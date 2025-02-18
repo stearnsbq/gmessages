@@ -23,8 +23,6 @@ function ENT:Initialize()
     self:SetSolid(SOLID_VPHYSICS)
     self:SetUseType(SIMPLE_USE)
 
-    halo.Add(entities, color, blurX=2, blurY=2, passes=1, additive=true, ignoreZ=false)
-
 
     net.WriteEntity(self)
     net.Broadcast()
@@ -32,6 +30,17 @@ function ENT:Initialize()
 
 end
 
+
+local function preventPickUp(ply, ent)
+
+	if ent:GetClass() == 'entity_message' then
+		return false
+	end
+
+	return true
+
+end
+hook.Add( "PhysgunPickup", "PlayerPreventMessagePickUp", preventPickUp )
 
 
 
