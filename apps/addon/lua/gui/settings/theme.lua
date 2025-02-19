@@ -17,7 +17,12 @@ GMessage.UI.Themes = {
                 color =  Color(0, 0, 0),
                 textColor = Color(255, 255, 255)
             },
-    
+        warning = {
+            color = Color(255, 102, 0),
+            textColor = Color(255, 255, 255)
+        }
+    },
+
         }
     },
     Dark = {
@@ -36,6 +41,10 @@ GMessage.UI.Themes = {
                 color = Color(50, 50, 50),
                 textColor = Color(255, 255, 255)
             },
+            warning = {
+                color = Color(255, 102, 0),
+                textColor = Color(255, 255, 255)
+            }
         }
     },
     HighContrast = {
@@ -54,10 +63,14 @@ GMessage.UI.Themes = {
                 color = Color(100, 100, 100),
                 textColor = Color(255, 255, 255)
             },
+            warning = {
+                color = Color(255, 102, 0),
+                textColor = Color(255, 255, 255)
+            }
+            
         }
     }
 }
-
 
 GMessage.UI.Sizes = {
     navbar = { 
@@ -65,7 +78,7 @@ GMessage.UI.Sizes = {
     },
     button = {
         height = 32,
-        width = 64
+        width = 128
     }
 }
 
@@ -78,8 +91,8 @@ function currentTheme()
     elseif selectedTheme == 'dark' then
         return GMessage.UI.Themes.Dark
     elseif selectedTheme == 'highContrast' then
-
         return GMessage.UI.Themes.HighContrast
     end
 
+    return GMessage.UI.Themes.Light
 end

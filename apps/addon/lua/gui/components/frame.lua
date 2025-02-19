@@ -58,6 +58,7 @@ function PANEL:Paint(width, height)
     local aX, aY = self:LocalToScreen()
 
     local currTheme = currentTheme()
+    
 
     BSHADOWS.BeginShadow()
     draw.RoundedBox(6, aX, aY, width, height, currTheme.background)

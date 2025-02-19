@@ -36,14 +36,16 @@ end
 function PANEL:SetType(type) 
 
     local currTheme = currentTheme()
-    
-    if type == 'primary' then
+
+    self.type = currTheme.button[type]
+
+    print(self.type, type)
+
+    if self.type == nil then
         self.type = currTheme.button.primary
-    elseif type == 'secondary' then
-        self.type = currTheme.button.secondary
     end
 
-
+    
 end
 
 function PANEL:SetLabel(label)

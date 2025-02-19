@@ -19,17 +19,22 @@ function viewMessage(message, apprasials)
     messageControls:DockMargin(200, 0, 200, 0)
 
 
-    local closeBtn = GMessage.UI.Components.Button("primary")
+    local upvoteButton = GMessage.UI.Components.Button("primary")
+    local downvoteButton = GMessage.UI.Components.Button("warning")
 
-    closeBtn:Dock(LEFT)
-    closeBtn:SetText(message)
+    downvoteButton:Dock(RIGHT)
+    downvoteButton:SetText("Downvote")
 
-    closeBtn.DoClick = function(pn1)
+
+    upvoteButton:Dock(LEFT)
+    upvoteButton:SetText("Upvote")
+
+    upvoteButton.DoClick = function(pn1)
         frame:Remove()
     end
 
-    messageControls:Add(closeBtn)
-
+    messageControls:Add(upvoteButton)
+    messageControls:Add(downvoteButton)
 
     return mainContent
 end
