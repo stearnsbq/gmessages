@@ -25,6 +25,7 @@ function PANEL:Init()
 
         local margin = pnl.margin
 
+    
         -- surface.SetDrawColor(GMessage.UI.Theme.closeBtn)
 
         -- surface.DrawTexturedRect(margin, margin, w - (margin * 2), h - (margin * 2))
@@ -32,6 +33,9 @@ function PANEL:Init()
     end
 
     local currTheme = currentTheme()
+    self.header.closeBtn:SetTextColor(currTheme.text.primary)
+
+
     self.header.title = self.header:Add("DLabel")
     self.header.title:Dock(LEFT)
     self.header.title:SetTextColor(currTheme.text.primary)

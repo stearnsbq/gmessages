@@ -18,7 +18,7 @@ net.Receive("onOpenMessage", function ()
     local msg = net.ReadString()
     local appraisals = net.ReadInt(32)
 
-	print(msg)
+
 	messageGUI = viewMessage(msg, appraisals)
 
 

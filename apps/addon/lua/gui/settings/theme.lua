@@ -22,9 +22,7 @@ GMessage.UI.Themes = {
             textColor = Color(255, 255, 255)
         }
     },
-
-        }
-    },
+},
     Dark = {
         primary = Color(45, 45, 50),
         background = Color(18, 18, 20),
@@ -77,8 +75,12 @@ GMessage.UI.Sizes = {
         height = 48
     },
     button = {
-        height = 32,
+        height = 48,
         width = 128
+    },
+    input = {
+        height = 48,
+        width = 512
     }
 }
 

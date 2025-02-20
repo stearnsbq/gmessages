@@ -2,6 +2,8 @@
 
 function viewMessage(message, apprasials)
     local frame = vgui.Create("GMessage.Frame")
+
+    local currTheme = currentTheme()
     
     frame:SetSize(800, 200)
     frame:Center()
@@ -16,7 +18,7 @@ function viewMessage(message, apprasials)
     local messageControls =  mainContent:Add("Panel")
     messageControls:Dock(BOTTOM)
     messageControls:SetWidth(25)
-    messageControls:DockMargin(200, 0, 200, 0)
+    messageControls:DockMargin(200, 20, 200, 0)
 
 
     local upvoteButton = GMessage.UI.Components.Button("primary")
@@ -35,6 +37,39 @@ function viewMessage(message, apprasials)
 
     messageControls:Add(upvoteButton)
     messageControls:Add(downvoteButton)
+
+
+    surface.CreateFont("GMessage.Message.Font", {
+        font = "Arial", -- Use the font-name which is shown to you by your operating system Font Viewer.
+        extended = false,
+        size = 48,
+        weight = 500
+    })
+
+    
+    surface.CreateFont("GMessage.Message.Apprasial.Font", {
+        font = "Arial", -- Use the font-name which is shown to you by your operating system Font Viewer.
+        extended = false,
+        size = 18,
+        weight = 500
+    })
+
+
+    local msgLabel = vgui.Create("DLabel")
+    msgLabel:SetText( message )
+    msgLabel:SetFont("GMessage.Message.Font")
+    msgLabel:SetTextColor(currTheme.text.primary)
+    msgLabel:Dock(FILL)
+    msgLabel:SetContentAlignment(5)
+    mainContent:Add(msgLabel)
+
+    local apprasialText = vgui.Create("DLabel")
+    apprasialText:SetText( "Apprasials " .. apprasials )
+    apprasialText:SetFont("GMessage.Message.Apprasial.Font")
+    apprasialText:SetTextColor(currTheme.text.primary)
+    apprasialText:Dock(FILL)
+    apprasialText:SetContentAlignment(2)
+    mainContent:Add(apprasialText)
 
     return mainContent
 end
