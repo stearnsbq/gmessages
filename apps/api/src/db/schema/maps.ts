@@ -4,7 +4,7 @@ import { relations } from "drizzle-orm";
 import { messages } from "./messages";
 
 
-export const maps = sqliteTable('maps', {
+const maps = sqliteTable('maps', {
     mapID: integer().primaryKey({autoIncrement: true}),
     workshopID: text(),
     firstMessageWrote: integer().notNull(),
@@ -12,6 +12,9 @@ export const maps = sqliteTable('maps', {
 });
 
 
-export const mapMessages = relations(maps, ({ many }) => ({
+const mapMessages = relations(maps, ({ many }) => ({
     messages: many(messages)
 }));
+
+
+export {maps, mapMessages}

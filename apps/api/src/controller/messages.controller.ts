@@ -8,9 +8,10 @@ import {and, eq} from 'drizzle-orm'
 import { messages, usersToVotedMessages } from "../db/schema/messages";
 import { maps } from "../db/schema/maps";
 
-export const authController = new Elysia({prefix: '/messages'})
+export const msgController = new Elysia({prefix: '/messages'})
 .use(auth)
-.post('/', async ({body,steamID, error}) => {
+.post('', async ({body,steamID, error}) => {
+
 
     const db = getDB();
 

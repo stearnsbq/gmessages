@@ -10,7 +10,7 @@ import { users } from "./users";
 import { maps } from "./maps";
 import { relations, sql } from "drizzle-orm";
 
-export const messages = sqliteTable("messages", {
+const messages = sqliteTable("messages", {
   messageID: integer().primaryKey({ autoIncrement: true }),
   steamID: text()
     .notNull()
@@ -31,14 +31,14 @@ export const messages = sqliteTable("messages", {
   rotZ: real().notNull(),
 });
 
-export const messageMap = relations(messages, ({ one }) => ({
+const messageMap = relations(messages, ({ one }) => ({
   map: one(maps, {
     fields: [messages.mapID],
     references: [maps.mapID],
   }),
 }));
 
-export const userMap = relations(messages, ({ one }) => ({
+const userMap = relations(messages, ({ one }) => ({
   user: one(users, {
     fields: [messages.steamID],
     references: [users.steamID],
@@ -46,7 +46,7 @@ export const userMap = relations(messages, ({ one }) => ({
 }));
 
 
-export const usersToVotedMessages = sqliteTable(
+const usersToVotedMessages = sqliteTable(
     "users_to_voted_messages",
     {
       steamID: text()
@@ -63,15 +63,15 @@ export const usersToVotedMessages = sqliteTable(
     ]
   );
 
-export const userUpvotedMessagesRelations = relations(users, ({ many }) => ({
+const userUpvotedMessagesRelations = relations(users, ({ many }) => ({
   usersToUpvotedMessages: many(usersToVotedMessages),
 }));
 
-export const messagesUpvotedRelations = relations(messages, ({ many }) => ({
+const messagesUpvotedRelations = relations(messages, ({ many }) => ({
   usersToUpvotedMessages: many(usersToVotedMessages),
 }));
 
-export const usersToUpvotedMessagesRelations = relations(
+const usersToUpvotedMessagesRelations = relations(
   usersToVotedMessages,
   ({ one }) => ({
     user: one(users, {
@@ -84,3 +84,6 @@ export const usersToUpvotedMessagesRelations = relations(
     }),
   })
 );
+
+
+export { messages, messageMap, userMap, usersToVotedMessages };

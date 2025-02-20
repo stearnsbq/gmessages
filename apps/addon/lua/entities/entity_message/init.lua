@@ -46,7 +46,7 @@ hook.Add( "PhysgunPickup", "PlayerPreventMessagePickUp", preventPickUp )
 
 function ENT:AcceptInput(name, caller, activator)  
 
-    PrintTable( engine.GetAddons() )
+
 	if name == "Use" and caller:IsPlayer() then
 		net.Start("onOpenMessage") 
         net.WriteString(self:GetMessage())

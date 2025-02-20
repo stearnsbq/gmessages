@@ -6,11 +6,11 @@ GMessage = GMessage or {
         Components = {
             
         }
-    }
+    },
+    APIServerURL  = 'https://gmessages-api-dev.stearnsbq.workers.dev/'
 }
 
 GMessage.Dir = "gui"
-
 
 
 
@@ -31,7 +31,9 @@ end
 GMessage:Include("settings/theme")
 
 GMessage:Include("include/bshadows")
-
+GMessage:Include("include/api")
+GMessage:Include("include/levenshtein")
+GMessage:Include("include/util")
 GMessage:Include("components/frame")
 GMessage:Include("components/button")
 GMessage:Include("components/input")

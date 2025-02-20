@@ -17,18 +17,6 @@ SWEP.DrawCrosshair = false
 
 net.Receive("openCreateMessageGui", function()
 
-    local frame = vgui.Create("GMessage.Frame")
-    frame:SetSize(800, 200)
-    frame:Center()
-    frame:MakePopup()
-    frame:SetTitle("Create Message")
-
-    local button = GMessage.UI.Components.Button("primary")
-    button:SetText("QUAD")
-    frame:Add(button)
-
-
-    button:Dock(LEFT)
-
+    local frame = createMessage()
 
 end)
